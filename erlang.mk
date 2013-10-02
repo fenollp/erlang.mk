@@ -14,14 +14,14 @@
 
 # Project.
 
-PROJECT ?= $(notdir $(CURDIR))
+PROJECT ?= "$(notdir '$(CURDIR)')"
 
 # Packages database file.
 
-PKG_FILE ?= $(CURDIR)/.erlang.mk.packages.v1
+PKG_FILE ?= "$(CURDIR)/.erlang.mk.packages.v1"
 export PKG_FILE
 
-PKG_FILE_URL ?= https://raw.github.com/extend/erlang.mk/master/packages.v1.tsv
+PKG_FILE_URL ?= 'https://raw.github.com/extend/erlang.mk/master/packages.v1.tsv'
 
 define get_pkg_file
 	wget -O $(PKG_FILE) $(PKG_FILE_URL)
@@ -51,7 +51,7 @@ gen_verbose = $(gen_verbose_$(V))
 
 # Deps directory.
 
-DEPS_DIR ?= $(CURDIR)/deps
+DEPS_DIR ?= "$(CURDIR)/deps"
 export DEPS_DIR
 
 REBAR_DEPS_DIR = $(DEPS_DIR)
@@ -221,7 +221,7 @@ dialyze:
 
 # Packages.
 
-$(PKG_FILE):
+"$(PKG_FILE)":
 	@$(call get_pkg_file)
 
 pkg-list: $(PKG_FILE)
